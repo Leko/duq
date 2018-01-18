@@ -1,6 +1,7 @@
 extern crate getopts;
 use getopts::Options;
 use std::env;
+use std::path::Path;
 
 fn query_disk_usage(inp: &str, out: Option<String>) {
     println!("{}", inp);
@@ -17,7 +18,12 @@ fn print_usage(program: &str, opts: Options) {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let program = args[0].clone();
+    let program_path = args[0].clone();
+    let program = Path::new(&program_path)
+        .file_name()
+        .unwrap()
+        .to_str()
+        .unwrap();
 
     let mut opts = Options::new();
     opts.optopt("o", "", "set output file name", "NAME");
