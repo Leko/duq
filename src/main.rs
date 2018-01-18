@@ -29,21 +29,15 @@ fn main() {
         Ok(m) => m,
         Err(f) => panic!(f.to_string()),
     };
-    if matches.opt_present("h") {
+    if matches.opt_present("help") {
         print_usage(&program, opts);
         return;
     }
-    let path = if !matches.free.is_empty() {
-        matches.free[0].clone()
-    } else {
+    if matches.free.len() != 2 {
         print_usage(&program, opts);
         return;
-    };
-    let query = if !matches.free.is_empty() {
-        matches.free[1].clone()
-    } else {
-        print_usage(&program, opts);
-        return;
-    };
+    }
+    let path = matches.free[0].clone();
+    let query = matches.free[1].clone();
     query_disk_usage(&path, &query);
 }
