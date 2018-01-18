@@ -12,7 +12,7 @@ fn query_disk_usage(inp: &str, out: Option<String>) {
 }
 
 fn print_usage(program: &str, opts: Options) {
-    let brief = format!("Usage: {} FILE [options]", program);
+    let brief = format!("Usage: {} PATH [options]", program);
     print!("{}", opts.usage(&brief));
 }
 
