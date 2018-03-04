@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["env", { "node": "4.8.7" }],
+    "@babel/preset-flow"
+  ]
+}
