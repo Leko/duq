@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "mocha --require=test/helper.js test",
+    "build": "babel src --out-dir dist",
     "lint": "eslint .",
     "flow": "flow --show-all-errors"
   },
