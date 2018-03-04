@@ -17,7 +17,7 @@ import File from './File'
 const debug = _debug(`duq:worker:id=${cluster.worker.id}`)
 
 const send = (message: Message) => {
-  const nativeSend = process.send
+  const nativeSend = process.send.bind(process)
   if (!nativeSend) {
     throw new Error('process.send is not implemented')
   }
